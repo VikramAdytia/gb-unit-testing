@@ -15,6 +15,9 @@ public class Calculator {
                 result = firstOperand * secondOperand;
                 break;
             case '/':
+                if (secondOperand == 0) {
+                    throw new IllegalArgumentException("Divider cannot be zero");
+                }
                 if (secondOperand != 0) {
                     result = firstOperand / secondOperand;
                     break;
@@ -42,9 +45,10 @@ public class Calculator {
 
     // Нужно написать в калькуляторе метод вычисления суммы покупки со скидкой и проверить его, используя AssertJ
     // Примерная сигнатура и тело метода:
-    public static double calculatingDiscount(double purchaseAmount, int discountAmount) {
+    public static double calculatingDiscount(double purchaseAmount, double discountAmount) {
         // purchaseAmount - сумма покупки
         // discountAmount - размер скидки
-        return 0; // Метод должен возвращать сумму покупки со скидкой
+        if (purchaseAmount == 0 || discountAmount == 0) throw new ArithmeticException();
+        return purchaseAmount - (purchaseAmount * discountAmount); // Метод должен возвращать сумму покупки со скидкой
     }
 }
