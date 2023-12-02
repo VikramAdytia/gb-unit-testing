@@ -1,21 +1,28 @@
 package seminars.third.tdd;
 
 public class User {
-
     String name;
     String password;
 
-    boolean isAuthenticate = false;
+    boolean isAuthenticate;
+    boolean isAdmin;
 
     public User(String name, String password, boolean isAdmin) {
         this.name = name;
         this.password = password;
-
+        this.isAdmin = true;
     }
 
-    //3.6.
     public boolean authenticate(String name, String password) {
-        return false;
+        if (this.name.equals(name) && this.password.equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    @Override
+    public String toString() {
+        return "User: " + this.name + ", password: " + this.password + ".";
+    }
 }
